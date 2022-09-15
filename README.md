@@ -158,3 +158,5 @@ Following are the steps to deploy the new cluster using argocd and cluster api(w
 ### 2.2. Deployment Flow
 
 Once pull requests of the `deployments` repo is merged, the argocd will automatically deploy the cluster. The automatic reconciliation of the cluster happens through the argocd app defined in the `deployment/capi-1/hawk-2/app.yaml app`. Basically, it deploys the cluster through the cluster-api and capo. Once the cluster is deployed, argocd will deploy the specified services into the cluster. This service deployment happens with the argocd apps defined in the `deployments/hawk-2/apps.yaml` repo. The deployment flow of the cluster is described in the following figure.
+
+![Alt text](./figures/deployment-flow.png?raw=true "deployment flow")
