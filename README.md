@@ -1,21 +1,23 @@
 # Deploy new Kubernetes Cluster
 
-We have added a new hawk-2 cluster to the `sth` data center. This document contains the main steps we have followed. These steps will be applicable for deploying new clusters or migrating existing clusters between the data centers (e.g `thn` to sth and vice versa). 
+We have deployed a new `hawk-2` cluster to the `sth` data center. This document contains the main steps we have followed. These steps will be applicable for deploying new clusters or migrating existing clusters between the data centers (e.g `thn` to i`sth` and vice versa). 
 
 ## 1. Cluster Setup
 
-The following are the main projects involved in the cluster setup. The relationship between these repositories is defined in the following figure. Please refere this diagram when reading thourh the below sections.
+Following are the main repositories involved in the cluster setup.
 
 1. [capi-clusters](https://github.com/pagero/capi-clusters)
 2. [helm-charts](https://github.com/pagero/helm-charts)
 3. [deployments](https://github.com/pagero/deployments)
 4. [ops](https://github.com/pagero/ops)
 
-![Alt text](./figures/figure-capi-cluster-repos.png?raw=true "capi cluster repos")
+The relationship between these repositories is defined in the following figure. Please refere this diagram when reading thourh the below sections.
+
+![Alt text](./figures/capi-cluster-repos.png?raw=true "capi cluster repos")
 
 ### 1.1. capi-clusters
 
-We have used Cluster-API provider Openstack(capo) to deploy the cluster in the Nordlo k8s environment. The capi-clusters define the manifest of clusters with Cluster-API.  these cluster configurations are linked to the deployments repo on GitHub. following are the cluster configurations and Cluster-API configurations related to the hawk-2 cluster. The best way to add and create these config files is to copy them from another cluster and replace the cluster names and other configurations. For example, in our case, we have copied hawk-1 cluster configs(in hawk-1 folder) which deploy in `thn` and renamed the fields to hawk-2 and modified the configuration as needed(for example adding sth related configs)
+We have used `Cluster-API Provider Openstack(CAPO)` to deploy the cluster in the Nordlo k8s environment. The capi-clusters define the manifest of clusters with Cluster-API.  these cluster configurations are linked to the deployments repo on GitHub. Following are the cluster configurations and Cluster-API configurations related to the `hawk-2` cluster. The best way to add and create these config files is to copy them from another cluster and replace the cluster names and other configurations. For example, in our case, we have copied `hawk-1` cluster configs(in `hawk-1` folder) which deploy in `thn` and renamed the fields to hawk-2 and modified the configuration as needed(for example adding `sth` related configs)
 
 1. `audit-policy.yaml`
 2. `cloud-config-secret.yaml`(changed the fields according to the sth). These secrets will be automatically generated when deploying the cluster. no need to do manual creation of secrets
